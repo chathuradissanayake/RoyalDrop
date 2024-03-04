@@ -1,0 +1,279 @@
+﻿<style>
+    .royald {
+        text-align: center;
+        font-size: 150%;
+        font-family: 'Old Standard TT', serif;
+        font-family: 'Quicksand', sans-serif;
+    }
+
+    .text1 {
+        text-align: center;
+        font-family: 'Dancing Script', cursive;
+    }
+
+
+ 
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - RoyalDrop</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/RoyalDrop.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+</head>
+<body class="mb-0">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/Images/logo-black.png" width="100px" /></a>
+                @*<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Royal Drop</a>*@
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contactus">Contact us</a>
+                        </li>
+
+                        <li>
+                            <form class="justify-content-center" asp-controller="Home" asp-action="Index" method="get">
+                                <div class="input-group rounded mb-3 searchbar">
+                                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" name="SearchString" />
+                                    <span class="input-group-text border-0"  id="search-addon">
+                                        <button type="submit" class="btn">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                    @*<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item2">
+                            <a class="nav-link text-dark" style="padding-right: 20px;" asp-area="" asp-controller="" asp-action="Contact us"><i class="fa-solid fa-heart"></i></a>
+                        </li>
+                        <li class="nav-item2">
+                            <a class="nav-link text-dark" style="padding-right: 20px;" asp-area="" asp-controller="" asp-action="Contact us"><i class="fa-solid fa-cart-shopping"></i></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" style="padding-right: 50px;" href="#" id="loginRegisterDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa-solid fa-user" style="font-size: 150%;"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="loginRegisterDropdown">
+                                <a class="dropdown-item" href="URL_for_LogIn">Log In</a>
+                                <a class="dropdown-item" href="URL_for_Register">Register</a>
+                            </div>
+                        </li>
+
+                    </ul>*@
+                    <ul class="navbar-nav ms-auto mb-3 mb-lg-0">
+                       
+                        
+                        <!-- Navbar dropdown -->
+                        @if (User.IsInRole("Admin"))
+                        {
+                           
+                            
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" 
+                                   role="button"
+                                   data-bs-toggle="dropdown"
+                                   aria-expanded="false">
+                                    DashBoard
+                                </a>
+                                <!-- Dropdown menu -->
+                                <ul class="dropdown-menu bg-dark">
+                                    <li>
+                                        <a class="dropdown-item bg-dark text-white-50" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item bg-dark text-white-50" asp-area="" asp-controller="Users" asp-action="Index">Customers</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item2">
+                                <a class="nav-link text-dark" style="padding-right: 20px;" asp-area="" asp-controller="Home" asp-action="Favourites"><i class="fa-solid fa-heart"></i></a>
+                            </li>
+                            <li class="nav-item2">
+                                <a class="nav-link text-dark" style="padding-right: 20px;" asp-area="" asp-action="PurchaseCart" asp-controller="Home"><i class="fa-solid fa-cart-shopping"></i></a>
+                            </li>
+                            <div class="nav-item2 ">
+                                <li class="nav-item dropdown">
+                                <a class="nav-link2 dropdown-toggle" style="padding-right: 20px; padding-bottom:20px;"
+                                       role="button"
+                                       data-bs-toggle="dropdown"
+                                       aria-expanded="false">
+                                        <i class="fa-solid fa-user text-black"></i>
+                                    </a>
+                                    <!-- Dropdown menu -->
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" asp-area="" asp-controller="" asp-action="">My Profile</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </div>
+                            
+                            
+                            
+                        }
+                        else
+                        {
+
+                            <li class="nav-item" >
+                                <a class="nav-link" style="padding-right: 20px;" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="padding-right: 20px;" asp-area="" asp-controller="Users" asp-action="Create">Register</a>
+                            </li>
+                             
+                            
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+    </header>
+
+    <div class="royald">
+        @*<img src="~/images/logo-no-background3.png" width="200px"/>*@
+        <h1>ROYAL DROP</h1>
+    </div>
+
+    <div class="text1">
+        <p>Trusted since 1998</p>
+    </div>
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer-distributed">
+
+        <div class="footer-left">
+
+            <i><img src="~/images/logo-no-background white.png" width="100px" style="margin-left: 100px;" /></i>
+
+            <p class="footer-links">
+                <a href="#" class="link-1">Home</a>
+
+                <a href="#">Blog</a>
+
+                <a href="#">Pricing</a>
+
+                <a href="#">About</a>
+
+                <a href="#">Faq</a>
+
+                <a href="#">Contact</a>
+            </p>
+
+            <p class="footer-company-name">Company Name © 2015</p>
+        </div>
+
+        <div class="footer-center">
+
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>No. 565, Temple road, </span> Colombo 07</p>
+            </div>
+
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>+9411343544</p>
+            </div>
+
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="#">luxuryrd@royaldrops.com</a></p>
+            </div>
+
+        </div>
+
+        <div class="footer-right">
+
+            <p class="footer-company-about">
+                <span>About the company</span>
+                Born of a passion for genuine fragrances, RoyalDrop brings authentic and essential luxury for the individual who knows what they desire.
+            </p>
+
+            <div class="">
+
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                   href="https://www.facebook.com/"
+                   role="button"
+                   data-mdb-ripple-color="dark">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <!-- Twitter -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                   href="https://www.x.com/"
+                   role="button"
+                   data-mdb-ripple-color="dark">
+                    <i class="fab fa-twitter"></i>
+                </a>
+
+                <!-- Instagram -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                   href="https://www.instragram.com/"
+                   role="button"
+                   data-mdb-ripple-color="dark">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+             @*   <!-- Google -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                   href="#!"
+                   role="button"
+                   data-mdb-ripple-color="dark">
+                    <i class="fab fa-google"></i>
+                </a>*@
+
+                
+
+
+            </div>
+
+        </div>
+
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

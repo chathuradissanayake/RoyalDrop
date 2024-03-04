@@ -1,0 +1,156 @@
+﻿@model RoyalDrop.Models.User
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<script>
+    function validateForm() {
+        var checkBox = document.getElementById("form2Example3cg");
+        if (!checkBox.checked) {
+            alert("Please agree to the terms of service.");
+            return false;
+        }
+        return true;
+    }
+</script>
+
+<hr />
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <div id="carouselExampleDark" class="carousel carousel-dark slide">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="3000">
+                    <img src="~/images/sq2.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        @*<h5>Premium</h5>
+                        <p>All products are 100% authentic original brand names.</p>*@
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="~/images/sq3.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        @*<h5>Earn Rewards</h5>
+                        <p>Every purchase gets you closer to lifetime discounts.</p>*@
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="~/images/sq1.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        @*<h5>Wholesale Accounts</h5>
+                        <p>The best place to buy in bulk or drop ship to your customers..</p>*@
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+    </div>
+    <div class="col-md-6">
+
+        <h2 class="text-uppercase text-center mb-3 justify-content-center">Create an account</h2>
+        <form asp-action="Create" onsubmit="return validateForm()">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-outline mb-2">
+                        <label asp-for="Firstname" class="form-label" for="form3Example1cg">First Name</label>
+                        <input asp-for="Firstname" type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                        <span asp-validation-for="Firstname" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-outline mb-2">
+                        <label asp-for="Lastname" class="form-label" for="form3Example1cg">Last Name</label>
+                        <input asp-for="Lastname" type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                        <span asp-validation-for="Lastname" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-outline mb-2">
+                <label asp-for="Email" class="form-label" for="form3Example1cg">Email</label>
+                <input asp-for="Email" type="email" id="form3Example1cg" class="form-control form-control-lg" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-outline mb-2">
+                        <label asp-for="Username" class="form-label" for="form3Example1cg">Username</label>
+                        <input asp-for="Username" type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                        <span asp-validation-for="NIC" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-outline mb-2">
+                        <label asp-for="Password" class="form-label" for="form3Example4cg">Password</label>
+                        <input type="password" asp-for="Password" id="form3Example4cg" class="form-control form-control-lg" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-outline mb-2">
+                <label asp-for="Address" class="form-label" for="form3Example3cg">Address</label>
+                <input asp-for="Address" type="text" id="form3Example3cg" class="form-control form-control-lg" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-outline mb-2">
+                        <label asp-for="ContactNo" class="form-label" for="form3Example3cg">Contact No</label>
+                        <input asp-for="ContactNo" type="text" id="form3Example3cg" class="form-control form-control-lg" />
+                        <span asp-validation-for="ContactNo" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-outline mb-2">
+                        <label asp-for="NIC" class="form-label" for="form3Example1cg">NIC</label>
+                        <input asp-for="NIC" type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                        <span asp-validation-for="NIC" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-check d-flex justify-content-center mb-5">
+                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
+                <label class="form-check-label" for="form2Example3g">
+                    I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+                </label>
+            </div>
+
+            <div class="d-flex justify-content-center " style="margin-top: -25px;">
+                <input type="submit" value="Register" class="btn btn-success " href="#">
+            </div>
+
+            <p class="text-center text-muted mt-4 mb-0">
+                Have already an account? <a asp-controller="Account" asp-action="Login" class="fw-bold text-body"><u>Login here</u></a>
+            </p>
+
+        </form>
+
+       
+
+
+    </div>
+
+</div>
+
+
+
+
+

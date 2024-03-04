@@ -1,0 +1,111 @@
+﻿@model IEnumerable<RoyalDrop.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+
+<style>
+   
+
+    .btn-info {
+        border-radius: 10px;
+        border: 2px solid #f7d139;
+        box-shadow: 3px 3px 3px gray;
+        width: 80px;
+        height: 40px;
+        color: white;
+        font-family: 'Oswald', sans-serif;
+    }
+
+    .btn-primary {
+        border-radius: 10px;
+        border: 2px solid #f7d139;
+        box-shadow: 3px 3px 3px gray;
+        width: 80px;
+        height: 40px;
+        color: white;
+        font-family: 'Oswald', sans-serif;
+    }
+
+    .btn-danger {
+        border-radius: 10px;
+        border: 2px solid #f7d139;
+        box-shadow: 3px 3px 3px gray;
+        width: 80px;
+        height: 40px;
+        color: white;
+        font-family: 'Oswald', sans-serif;
+    }
+</style>
+
+
+<hr>
+
+
+
+
+<h4>USER DETAILS</h4>
+<hr /><br />
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Firstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactNo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactNo)
+            </td>
+            <td>
+                <div class="btn-group">
+                    <a asp-action="Details" asp-route-id="@item.UserId" class="btn btn-sm btn-primary ml-2">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.UserId" class="btn btn-sm btn-danger ml-2">Delete</a>
+                </div>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,125 @@
+﻿@model IEnumerable<RoyalDrop.Models.Product>
+
+@{
+    ViewData["Title"] = "Products";
+}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+
+<style>
+
+    .btn-info {
+        border-radius: 10px;
+        border: 2px solid #f7d139;
+        box-shadow: 3px 3px 3px gray;
+        width: 80px;
+        height: 40px;
+        color: white;
+        font-family: 'Oswald', sans-serif;
+    }
+
+    .btn-primary {
+        border-radius: 10px;
+        border: 2px solid #f7d139;
+        box-shadow: 3px 3px 3px gray;
+        width: 80px;
+        height: 40px;
+        color: white;
+        font-family: 'Oswald', sans-serif;
+    }
+
+    .btn-danger {
+        border-radius: 10px;
+        border: 2px solid #f7d139;
+        box-shadow: 3px 3px 3px gray;
+        width: 80px;
+        height: 40px;
+        color: white;
+        font-family: 'Oswald', sans-serif;
+    }
+</style>
+
+
+<hr>
+
+
+
+
+<form class="d-flex justify-content-between" asp-controller="Products" asp-action="Index" method="get">
+    <h3>Products</h3>
+    <div class="input-group rounded mb-3 w-50">
+        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" name="SearchString" />
+        <span class="input-group-text border-0" id="search-addon">
+            <button type="submit" class="btn">
+                <i class="fas fa-search"></i>
+            </button>
+        </span>
+    </div>
+</form>
+
+
+<hr /><br />
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Productname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Purchase)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                <img src="../images/@item.ImageUrl" style="width:75px; height:75px;"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Productname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Purchase)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                <div class="btn-group">
+                    <a asp-action="Edit" asp-route-id="@item.ProductId" class="btn btn-sm btn-info">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.ProductId" class="btn btn-sm btn-primary ml-2">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.ProductId" class="btn btn-sm btn-danger ml-2">Delete</a>
+                </div>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+

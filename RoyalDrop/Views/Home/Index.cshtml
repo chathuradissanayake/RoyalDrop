@@ -1,0 +1,204 @@
+﻿@model IEnumerable<RoyalDrop.Models.Product>
+
+
+@{
+    ViewData["Title"] = "Home";
+
+    Pager pager = new Pager();
+
+    int pageNo = 0;
+
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet" >
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap" rel="stylesheet">
+
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+
+<style>
+
+
+    .custom-button {
+        text-align: center;
+        width: 150px;
+        height: 40px;
+    }
+    .button-row {
+        margin-bottom:2px;
+    }
+
+    .namestyle {
+        color: #262626;
+        font-family: 'Exo 2', sans-serif;
+
+    }
+
+    .black-button {
+        background-color: #454545;
+        border-radius: 10px;
+        border: 2px solid #f7d139;
+        box-shadow: 5px 5px 10px gray;
+        width: 80px;
+        height: 40px;
+        color: white;
+    }
+
+    .card-text {
+        padding-bottom: 10px;
+        font-family: 'Rajdhani', sans-serif;
+        font-size: 120%;
+    }
+
+/*    body {
+        
+		background-size: cover;
+		background-image: url('images/pngwing.com xl op15.png');
+    }*/
+
+
+</style>
+
+
+
+
+
+
+
+<div id="carouselExampleDark" class="carousel carousel-dark slide">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="3000">
+            <img src="~/images/slide1.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Premium</h5>
+                <p>All products are 100% authentic original brand names.</p>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="3000">
+            <img src="~/images/slide2.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Earn Rewards</h5>
+                <p>Every purchase gets you closer to lifetime discounts.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="~/images/slide3.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Wholesale Accounts</h5>
+                <p>The best place to buy in bulk or drop ship to your customers..</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<br /><hr /><br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Column for the heading -->
+            <h2 style=" font-family: 'Old Standard TT', serif; font-family: 'Quicksand', sans-serif;">PERFUMES</h2>
+        </div>
+        <div class="col-md-6">
+            <!-- Column for the search bar -->
+            <form class="justify-content-center" asp-controller="Home" asp-action="Index" method="get">
+                <div class="input-group rounded mb-3">
+                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" name="SearchString" />
+                    <span class="input-group-text border-0" id="search-addon">
+                        <button type="submit" class="btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<section style="background-color: #eee;">
+    
+    <div class="container py-3">
+        
+        <div class="row mb-4">
+            @foreach (var item in Model)
+            {
+                
+                <div class="card mx-auto col-md-12 col-lg-3 mt-3">
+                    <img class='mx-auto img-thumbnail'
+                         src="../images/@item.ImageUrl"
+                         width="150" height="150"/>
+                    <div class="card-body text-center mx-auto">
+                        
+                        
+                        
+                        <div class='cvp'>
+                            <a asp-action="Details" asp-route-id="@item.ProductId" class="namestyle" style="text-decoration:none">@item.Productname</a><br />
+                            @*<h5 class="card-title font-weight-bold">@item.Productname</h5>*@
+                            
+                            
+                        </div>
+                        
+                     
+                        
+                    </div>
+
+                    <div class="text-center ">
+                        <div class="button-row">
+                            <p class="card-text">Rs. @item.Purchase</p>
+                            
+                        </div>
+                    </div>
+
+                    <div class="text-center ">
+                        <div class="button-row">
+                            
+                            @*<button id="button1"><a asp-action="Details" asp-route-id="@item.ProductId">Button 1</a> </button>*@
+                            <button id="button1" class="black-button"><a asp-action="PurchaseCart" asp-controller="Home" style="color: white"><i class='fas fa-cart-plus'></i></a></button>
+                            <button id="button1" class="black-button"><a asp-action="" asp-controller="Home" style="text-decoration:none; color: white; font-family: 'Fjalla One', sans-serif;">BUY</a></button>
+
+                        </div>
+   
+                    </div>
+
+                </div>              
+            }
+        </div>
+    </div>
+</section>
+
+@*<div class="container">
+    @if(pager.TotalPages > 0)
+    {
+        <ul class="pagination justify-content-end">
+            @for (var pge = pager.StartPage; pge <= pager.EndPage; pge++)
+            {
+                <li class="page-item @(pge == pager.CurrentPage ? "active" : "")">
+                    <a class="page-link" asp-controller="Products" asp-action="Index" asp-route-pg="@pge">@pge</a>
+                </li>
+            }
+        </ul>
+    }
+</div>*@

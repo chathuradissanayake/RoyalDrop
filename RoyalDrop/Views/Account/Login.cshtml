@@ -1,0 +1,122 @@
+﻿@model RoyalDrop.Models.Login
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+
+<style>
+
+
+
+    .form-controls {
+        margin: 0 auto;
+        border: 1px solid #ccc;
+        border: 1px solid #ccc;
+        border-radius: 10px; /* Adjust the radius as per your preference */
+        padding: 10px;
+        box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.2); /* Add shadow */
+        width: 350px; /* Adjust the width as needed */
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .btn-success {
+        border-radius: 10px;
+        border: 2px solid #f7d139;
+        box-shadow: 3px 3px 3px gray;
+        width: 120px;
+        height: 40px;
+        color: white;
+        font-family: 'Oswald', sans-serif;
+    }
+
+</style>
+
+
+<hr>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 sec1">
+            <div id="carouselExampleDark" class="carousel carousel-dark slide">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="3000">
+                        <img src="~/images/sq3.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            @*<h5>Premium</h5>
+                            <p>All products are 100% authentic original brand names.</p>*@
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="3000">
+                        <img src="~/images/sq2.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            @*<h5>Earn Rewards</h5>
+                            <p>Every purchase gets you closer to lifetime discounts.</p>*@
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="~/images/sq1.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            @*<h5>Wholesale Accounts</h5>
+                            <p>The best place to buy in bulk or drop ship to your customers..</p>*@
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-6 sec2">
+            <!-- Content for sec2 -->
+            <form asp-action="Login">
+                @Html.HiddenFor(x => x.ReturnUrl)
+
+                @if (!string.IsNullOrEmpty(ViewBag.Message))
+                {
+                    <span class="text-danger">
+                        @ViewBag.Message
+                    </span>
+                }
+
+                <div class="container">
+                    <br />
+                    <div style="text-align: center;">
+                        <img src="~/images/logo-no-background2.png" width="150px" style="margin: 0 auto; display: block;" />
+                        <br />
+                        <h1>LOG IN</h1>
+                        <br />
+                        <input class="form-controls" type="text" name="username" placeholder="Username">
+                        <input type="password" class="form-controls" name="password" placeholder="Password">
+                        <br />
+                        <button class="btn btn-success">SIGN IN</button>
+
+                        <p class="text-center text-muted mt-4 mb-0">
+                            New to RoyalDrop? <a asp-controller="Users" asp-action="Create" class="fw-bold text-body"><u>Register here</u></a>
+                        </p>
+                    </div>
+                    <br />
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</div>
