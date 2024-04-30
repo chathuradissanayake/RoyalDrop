@@ -5,7 +5,7 @@
 namespace RoyalDrop.Migrations
 {
     /// <inheritdoc />
-    public partial class initialdb : Migration
+    public partial class RoyalDrop1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

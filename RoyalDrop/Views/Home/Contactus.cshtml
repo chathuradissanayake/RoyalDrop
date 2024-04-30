@@ -3,29 +3,48 @@
     ViewData["Title"] = "Contact us";
 }
 
-<h1>Contact us</h1>
+
 
 <div class="row">
     <div class="col-md-6">
-
-
+        <div class="textst">
+            <h3 style="font-weight:500"><b>Contact us</b></h3>
         <p>
-            No. 565, Temple road,
+            RoyalDrop Pvt Ltd,<br>
+            No. 565, Temple road,<br>
             Colombo 07
         </p>
-        <p>+9411343544</p>
-        <p>luxuryrd@royaldrops.com</p>
+        </div>
+        <p><a href="tel:+94773084850">+94773084850</a></p>
+        <p><a href="mailto:luxuryrd@royaldrops.com">luxuryrd@royaldrops.com</a></p>
     </div>
     <div class="col-md-6">
 
+        <div class="textst">
+            <h3 style ="font-weight:500"> <b>Contact us</b></h3>
+        <div class="contact-us-container">
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input class="form-control" type="text" name="username" id="username" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input class="form-control" type="email" name="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject:</label>
+                    <input class="form-control" type="text" name="subject" id="subject" placeholder="Enter subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea class="form-control" name="message" id="message" rows="5" placeholder="Enter your message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+        </div>
 
-        <p>Leave a message</p>
-        <input class="contactus" type="text" name="username" placeholder="Username"><br />
-        <input class="" type="text" name="Email" placeholder="Email"><br />
-        <input class="" type="text" name="subject" placeholder="Subject"><br />
-        <input class="" type="text" name="message" placeholder="Message"><br />
-        <button>Send</button>
-
+        </div>
 
         
         
@@ -33,3 +52,19 @@
 
 </div>
 
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@200&display=swap" rel="stylesheet">
+
+<style>
+    .textst {
+        font-family: 'Exo 2', sans-serif;
+    }
+</style>
+
+<style>
+
+    .btn {
+        margin-top: 10px; 
+        border-radius: 5px;
+        
+    }
+</style>

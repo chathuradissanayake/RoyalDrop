@@ -12,8 +12,8 @@ using RoyalDrop.Data;
 namespace RoyalDrop.Migrations
 {
     [DbContext(typeof(RoyalDropContext))]
-    [Migration("20240304184308_initialdb")]
-    partial class initialdb
+    [Migration("20240423224206_RoyalDrop1")]
+    partial class RoyalDrop1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
